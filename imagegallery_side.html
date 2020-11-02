@@ -22,15 +22,13 @@
 
         .content-wrapper {
             display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
+            flex-direction: row;
             padding: 20px;
         }
 
         .carousel-wrapper {
             box-sizing: border-box;
-            background: rgba(24, 163, 31, 0.3);
-            flex: 100%;
+            background: rgba(212, 124, 9, 0.5);
             display: flex;
             flex-direction: row;
         }
@@ -70,10 +68,6 @@
             scroll-behavior: smooth;
         }
 
-        .other {
-            flex: 100%
-        }
-
         .image {
             border: 1px solid rgba(0, 0, 0, 0.3);
             height: auto;
@@ -100,13 +94,13 @@
             width: 100%;
             outline: none;
             border: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 5px;
-            box-sizing: border-box;
             background: #fff;
             color: rgba(0, 0, 0, 0.8);
         }
 
         .up {
+            padding: 5px;
+            box-sizing: border-box;
             display: none;
             position: absolute;
             top: 0;
@@ -114,30 +108,47 @@
         }
 
         .down {
+            padding: 5px;
+            box-sizing: border-box;
             position: absolute;
             bottom: 0;
             left: 0;
         }
 
-        .content-wrapper {
-            display: flex;
-            flex-direction: row;
-            padding: 20px;
+        .image-container{
+            position: relative;
         }
 
-        .carousel-wrapper {
-            box-sizing: border-box;
-            background: rgba(24, 163, 31, 0.3);
-            flex: 100%;
-            display: flex;
-            flex-direction: row;
+        .prev {
+            padding: 30px 4px;
+            position: absolute;
+            width: 20px;
+            top: 50;
+            left: 0;
         }
 
+        .next {
+            padding: 30px 4px;
+            position: absolute;
+            width: 20px;
+            top: 50;
+            right: 0;
+        }
 
         @media screen and (max-width: 576px) {
+            .content-wrapper {
+                flex-wrap: wrap;
+                padding: 10px;
+            }
+
+            .main-image {
+                height: 200px;
+                border-radius: 2px;
+                object-fit: cover;
+            }
+
             .carousel-wrapper {
                 flex: 35%;
-                position: relative;
             }
 
             .images-bar {
@@ -148,49 +159,40 @@
                 flex: 100%;
             }
 
-            .main-image {
-                object-fit: contain;
-            }
-
-            .up {
-                /* display: none; */
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-
-            .down {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-            }
-
             .other {
                 flex: 75%
             }
         }
 
         @media screen and (min-width: 576px) {
+            .content-wrapper {
+                flex-wrap: wrap;
+            }
+
             .carousel-wrapper {
-                flex: 35%;
+                flex: 100%;
             }
 
             .other {
-                flex: 75%
+                flex: 100%
+            }
+
+            .prev,.next {
+                display: none;
             }
         }
 
         @media screen and (min-width: 768px) {
-            /* .content-wrapper {
+            .content-wrapper {
                 flex-wrap: wrap;
-            } */
+            }
 
             .carousel-wrapper {
-                flex: 50%;
+                flex: 100%;
             }
 
             .other {
-                flex: 50%
+                flex: 100%
             }
         }
 
@@ -226,10 +228,14 @@
                 <button class="down"><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
             </div>
             <div class="image-container">
-                <img src="images/img1.jpg" class="main-image">
+                <button class="prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+                <img src="images/img1.jpg" id="img1" class="main-image">
+                <button class="next"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
             </div>
         </div>
-        <div class="other"></div>
+        <div class="other" style="height:300px; background: red;">
+            <h1 style="color: white;text-align: center;">Other content</h1>
+        </div>
     </div>
     <script>
         let imageContainer = document.querySelector('.image-container');
@@ -250,8 +256,10 @@
             'img10': 'img10.jpg',
             'img11': 'img11.jpg'
         }
+        const imageIds = Object.keys(images);
+        const imageVales = Object.values(images);
 
-        Object.values(images).forEach(img => {
+        imageVales.forEach(img => {
             imageTag = document.createElement('img');
             imageTag.src = path + img
             imageTag.setAttribute('class', 'image');
@@ -268,6 +276,7 @@
             let img = document.querySelector(`img#${id}`)
             img.setAttribute('class', 'image active')
             mainImage.src = path + images[id]
+            mainImage.id = id;
         }
 
         let up = document.querySelector('button.up');
@@ -285,6 +294,36 @@
             imagesClass.scrollTo(0, yheight);
             down.style.display = 'none';
             up.style.display = 'block';
+        }
+        let prev = document.querySelector('.prev');
+        let next = document.querySelector('.next');
+        prev.addEventListener('click',getprevImageId);
+        next.addEventListener('click',getnextImageId);
+        
+        function getprevImageId(){
+            let latestImage;
+            let CurrId = imageIds.indexOf(mainImage.id)
+            if(CurrId === 0){
+                latestImage = imageIds[imageIds.length-1]
+            }else{
+                latestImage = imageIds[CurrId - 1]
+            }
+            console.log(`${latestImage} : ${images[latestImage]}`)
+            mainImage.src = path + images[latestImage]
+            mainImage.id = latestImage;
+        }
+
+        function getnextImageId(){
+            let latestImage;
+            let CurrId = imageIds.indexOf(mainImage.id)
+            if (CurrId === imageIds.length-1) {
+                latestImage = imageIds[0]
+            }else{
+                latestImage = imageIds[CurrId + 1]
+            }
+            console.log(`${latestImage} : ${images[latestImage]}`)
+            mainImage.src = path + images[latestImage]
+            mainImage.id = latestImage;
         }
     </script>
 </body>
