@@ -67,7 +67,8 @@
             padding: 0;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            /* need to be hidden */
+            overflow: scroll;
             scroll-behavior: smooth;
         }
 
@@ -147,12 +148,10 @@
         }
 
         .des-content {
-            width: 100%;
+            width: 96%;
+            margin: 2%;
         }
 
-        figure{
-            
-        }
         .sample {
             width: 50%;
             height: auto;
@@ -163,8 +162,28 @@
             box-sizing: border-box;
         }
 
-        p {
+        .des-content p {
             text-indent: 40px;
+        }
+
+        .wishlist {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50rem !important;
+            background: #fff;
+            box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .fa-heart {
+            color: #aaa;
+            margin-top: 2px;
         }
 
         @media screen and (max-width: 576px) {
@@ -253,17 +272,26 @@
 
         @media screen and (min-width: 1200px) {
             .carousel-wrapper {
-                flex: 35%;
+                flex: 40%;
             }
 
             .Description {
-                flex: 65%
+                flex: 60%
             }
+        }
+
+        header,
+        footer {
+            padding: 30px;
+            background: #3939;
         }
     </style>
 </head>
 
 <body>
+    <header>
+        <h1 style="color:#fff; text-align:center">sample header</h1>
+    </header>
     <div class="content-wrapper">
         <div class="carousel-wrapper">
             <div class="images-bar">
@@ -275,6 +303,7 @@
             <div class="image-container">
                 <button class="prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
                 <img src="images/img1.jpg" id="img1" class="main-image">
+                <div class="wishlist"><i class="fa fa-heart" aria-hidden="true"></i></div>
                 <button class="next"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
             </div>
         </div>
@@ -288,13 +317,44 @@
                     highlited with blue border</p>
 
                 <p>we have 2 buttons positioned on top and bottom of the image bar(vertical carousel)
-                    by default the button(up) is no displayed.For the mobile devices i have hidden the vertical carousel and
+                    by default the button(up) is no displayed.For the mobile devices i have hidden the vertical carousel
+                    and
                     added two buttons for showing previous image and next image when clicked left and right</p>
-                
+                <hr>
+                <h3>Random text</h3>
 
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus vitae, distinctio voluptate nihil
+                    consequatur placeat nisi ut, fugit eius cumque dolorum modi voluptatum quasi! Repudiandae in
+                    explicabo commodi numquam sequi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati
+                    aspernatur ut, ex nostrum molestias, enim nobis iure doloremque hic officia libero, necessitatibus
+                    mollitia quasi error adipisci perspiciatis eaque praesentium nisi?
+                </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus vitae, distinctio voluptate nihil
+                    consequatur placeat nisi ut, fugit eius cumque dolorum modi voluptatum quasi! Repudiandae in
+                    explicabo commodi numquam sequi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati
+                    aspernatur ut, ex nostrum molestias, enim nobis iure doloremque hic officia libero, necessitatibus
+                    mollitia quasi error adipisci perspiciatis eaque praesentium nisi?
+                </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus vitae, distinctio voluptate nihil
+                    consequatur placeat nisi ut, fugit eius cumque dolorum modi voluptatum quasi! Repudiandae in
+                    explicabo commodi numquam sequi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati
+                    aspernatur ut, ex nostrum molestias, enim nobis iure doloremque hic officia libero, necessitatibus
+                    mollitia quasi error adipisci perspiciatis eaque praesentium nisi?
+                </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus vitae, distinctio voluptate nihil
+                    consequatur placeat nisi ut, fugit eius cumque dolorum modi voluptatum quasi! Repudiandae in
+                    explicabo commodi numquam sequi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati
+                    aspernatur ut, ex nostrum molestias, enim nobis iure doloremque hic officia libero, necessitatibus
+                    mollitia quasi error adipisci perspiciatis eaque praesentium nisi?
+                </p>
+                <hr>
             </div>
         </div>
     </div>
+    <footer>
+        <h1 style="color:#fff; text-align:center">sample footer</h1>
+    </footer>
+
     <script>
         let imageContainer = document.querySelector('.image-container');
         let imagesClass = document.querySelector('.images')
@@ -382,6 +442,19 @@
             // console.log(`${latestImage} : ${images[latestImage]}`)
             mainImage.src = path + images[latestImage]
             mainImage.id = latestImage;
+        }
+
+        let wishlist = document.querySelector('.wishlist');
+        wishlist.addEventListener('click', addOrRemoveFormWishlist);
+
+        function addOrRemoveFormWishlist() {
+            let heart = wishlist.querySelector('.fa-heart')
+            // console.log(heart)
+            if (heart.style.color !== 'red') {
+                heart.style.color = 'red'
+            } else {
+                heart.style.color = '#aaa'
+            }
         }
     </script>
 </body>
