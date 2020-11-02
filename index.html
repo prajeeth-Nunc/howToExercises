@@ -18,6 +18,7 @@
             margin: 0;
             padding: 0;
             background: #f8f8f8;
+            font-family: Roboto, Arial, sans-serif;
         }
 
         .content-wrapper {
@@ -28,9 +29,11 @@
 
         .carousel-wrapper {
             box-sizing: border-box;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: row;
+            height: 500px;
+            margin: 0 0 20px 0;
         }
 
         .image-container {
@@ -49,7 +52,7 @@
             position: relative;
             transition: all 1s;
             vertical-align: middle;
-            margin: 0px 0px 5px 0px;
+            /* margin: 0px 0px 5px 0px; */
         }
 
         .main-image {
@@ -115,7 +118,7 @@
             left: 0;
         }
 
-        .image-container{
+        .image-container {
             position: relative;
         }
 
@@ -135,20 +138,52 @@
             right: 0;
         }
 
+        .Description {
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            background: #fff;
+            color: #000;
+        }
+
+        .des-content {
+            width: 100%;
+        }
+
+        figure{
+            
+        }
+        .sample {
+            width: 50%;
+            height: auto;
+            padding: 4px;
+            margin: 10px 25px;
+            float: right;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+        }
+
+        p {
+            text-indent: 40px;
+        }
+
         @media screen and (max-width: 576px) {
             .content-wrapper {
                 flex-wrap: wrap;
                 padding: 10px;
             }
 
-            .main-image {
-                height: 200px;
-                border-radius: 2px;
-                object-fit: cover;
-            }
-
             .carousel-wrapper {
                 flex: 35%;
+                height: 250px;
+            }
+
+            .main-image {
+                height: 250px;
+                border-radius: 2px;
+                padding: 5px;
+                box-sizing: border-box;
+                object-fit: cover;
             }
 
             .images-bar {
@@ -159,8 +194,17 @@
                 flex: 100%;
             }
 
-            .other {
-                flex: 75%
+            .Description {
+                flex: 75% border
+            }
+
+            .sample {
+                float: none;
+                width: 98%;
+                margin: 1%;
+                height: auto;
+                padding: 4px;
+                box-sizing: border-box;
             }
         }
 
@@ -173,11 +217,12 @@
                 flex: 100%;
             }
 
-            .other {
+            .Description {
                 flex: 100%
             }
 
-            .prev,.next {
+            .prev,
+            .next {
                 display: none;
             }
         }
@@ -191,7 +236,7 @@
                 flex: 100%;
             }
 
-            .other {
+            .Description {
                 flex: 100%
             }
         }
@@ -201,7 +246,7 @@
                 flex: 50%;
             }
 
-            .other {
+            .Description {
                 flex: 50%
             }
         }
@@ -211,7 +256,7 @@
                 flex: 35%;
             }
 
-            .other {
+            .Description {
                 flex: 65%
             }
         }
@@ -233,8 +278,21 @@
                 <button class="next"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
             </div>
         </div>
-        <div class="other" style="height:300px; background: red;">
-            <h1 style="color: white;text-align: center;">Other content</h1>
+        <div class="Description">
+            <div class="des-content">
+                <h3>Description :</h3>
+                <img src="images/flipkart.PNG" class="sample" alt="demo-image">
+
+                <p>I have tried the vertical carousel which i took as an example of Flipkart product view container
+                    where on mouseover the image is shown in the main container and the hovered image is
+                    highlited with blue border</p>
+
+                <p>we have 2 buttons positioned on top and bottom of the image bar(vertical carousel)
+                    by default the button(up) is no displayed.For the mobile devices i have hidden the vertical carousel and
+                    added two buttons for showing previous image and next image when clicked left and right</p>
+                
+
+            </div>
         </div>
     </div>
     <script>
@@ -297,31 +355,31 @@
         }
         let prev = document.querySelector('.prev');
         let next = document.querySelector('.next');
-        prev.addEventListener('click',getprevImageId);
-        next.addEventListener('click',getnextImageId);
-        
-        function getprevImageId(){
+        prev.addEventListener('click', getprevImageId);
+        next.addEventListener('click', getnextImageId);
+
+        function getprevImageId() {
             let latestImage;
             let CurrId = imageIds.indexOf(mainImage.id)
-            if(CurrId === 0){
-                latestImage = imageIds[imageIds.length-1]
-            }else{
+            if (CurrId === 0) {
+                latestImage = imageIds[imageIds.length - 1]
+            } else {
                 latestImage = imageIds[CurrId - 1]
             }
-            console.log(`${latestImage} : ${images[latestImage]}`)
+            // console.log(`${latestImage} : ${images[latestImage]}`)
             mainImage.src = path + images[latestImage]
             mainImage.id = latestImage;
         }
 
-        function getnextImageId(){
+        function getnextImageId() {
             let latestImage;
             let CurrId = imageIds.indexOf(mainImage.id)
-            if (CurrId === imageIds.length-1) {
+            if (CurrId === imageIds.length - 1) {
                 latestImage = imageIds[0]
-            }else{
+            } else {
                 latestImage = imageIds[CurrId + 1]
             }
-            console.log(`${latestImage} : ${images[latestImage]}`)
+            // console.log(`${latestImage} : ${images[latestImage]}`)
             mainImage.src = path + images[latestImage]
             mainImage.id = latestImage;
         }
