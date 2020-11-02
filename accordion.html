@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>accrodion</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .accordion {
+            width: 50%;
+        }
+
+        button {
+            width: 100%;
+            display: block;
+            outline: none;
+            border: 1px solid rgba(0,0,0,.2);
+            text-align: left;
+            padding: 20px;
+            cursor: pointer;
+            
+        }
+
+        .pannel {
+            display: none;
+            background: #555;
+            color: white;
+            margin: 0;
+            padding: 30px;
+            transition: 1s;
+        }
+        .active,button:hover{
+            background-color: dodgerblue; 
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="accordion">
+        <button>section 1</button>
+        <div class="pannel" >
+            <h1>section 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit aut exercitationem error labore
+                ad repellat quod vero accusamus. Quis eum minima perspiciatis rem provident aut laboriosam
+                magnam harum nemo iste.</p>
+        </div>
+        <button>section 2</button>
+        <div class="pannel">
+            <h1>section 2</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias odit vero amet!
+                Ratione laborum repellendus vitae mollitia ex
+                architecto quia pariatur minima, asperiores error quae consequuntur dolorum ad voluptatem debitis?</p>
+        </div>
+        <button>section 3</button>
+        <div class="pannel">
+            <h1>section 3</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias odit vero amet!
+                Ratione laborum repellendus vitae mollitia ex
+                architecto quia pariatur minima, asperiores error quae consequuntur dolorum ad voluptatem debitis?</p>
+        </div>
+        <button>section 4</button>
+        <div class="pannel">
+            <h1>section 4</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias odit vero amet!
+                Ratione laborum repellendus vitae mollitia ex
+                architecto quia pariatur minima, asperiores error quae consequuntur dolorum ad voluptatem debitis?</p>
+        </div>
+    </div>
+    <script>
+        var buttons = document.querySelectorAll(".accordion button");
+        console.log(buttons);
+        buttons.forEach(btn => {
+            btn.addEventListener('click',function() {
+                // let activePannels = document.querySelectorAll('.active');
+                // let Pannels = document.querySelectorAll('.pannel');
+                // Pannels.forEach(pannel => {
+                //     pannel.style.display = "none";
+                // });
+                // activePannels.forEach(btn => {
+                //     btn.classList.remove('active')
+                // });
+                this.classList.toggle("active");
+                let panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            })
+        })
+
+    </script>
+</body>
+
+</html>

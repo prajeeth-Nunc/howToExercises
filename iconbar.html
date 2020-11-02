@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>icon-bar</title>
+    <style>
+        /* body{
+            margin: 0;
+        }
+        .hor{
+            width: 100%;
+            background: #000;
+            overflow: auto;
+        }
+        .hor a{
+            float: left;
+            text-align: center;
+            width: 20%;
+            padding: 20px 0px;
+            text-decoration: none;
+            color: #fff;
+        }
+        a:hover{
+            background: #666;
+
+        }
+        .active {
+            background-color: #4CAF50;
+        }
+
+        .ver{
+            width: 100px;
+            background: #000;
+            overflow: auto;
+            position: fixed;
+            top: 100px;
+            left: 0px;
+        }
+
+        .ver a{
+            display: block;
+            text-align: center;
+            padding: 20px 0px;
+            text-decoration: none;
+            color: #fff;
+        } */
+
+        .container1 {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .container1 div{
+            width: 35px;
+            height: 5px;
+            background-color: black;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        .change1 .bar2{
+            opacity: 0;
+        }
+        .change1 .bar1{
+            -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+            transform: rotate(-45deg) translate(-9px, 6px);
+        }
+
+        .change1 .bar3{
+            -webkit-transform: rotate(45deg) translate(-8px, -8px);
+            transform: rotate(45deg) translate(-8px, -8px);
+        }
+
+
+
+    </style>
+</head>
+<body>
+<!-- <div class="hor">
+    <a  class="active" href="#">icon1</a>
+    <a href="#">icon2</a>
+    <a href="#">icon3</a>
+    <a href="#">icon4</a>
+    <a href="#">icon5</a>
+</div>
+
+
+<div class="ver">
+    <a class="active" href="#">icon1</a>
+    <a href="#">icon2</a>
+    <a href="#">icon3</a>
+    <a href="#">icon4</a>
+    <a href="#">icon5</a>
+    <a href="#">icon3</a>
+    <a href="#">icon4</a>
+    <a href="#">icon5</a>
+    <a href="#">icon3</a>
+    <a href="#">icon4</a>
+    <a href="#">icon5</a>
+</div> -->
+
+
+<div class="container1" onclick="fun(this)">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+</div>
+
+<script>
+    function fun(x){
+        x.classList.toggle("change1");
+    }
+
+</script>
+</body>
+</html>

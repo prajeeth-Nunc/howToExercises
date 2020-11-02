@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            max-width: 768px;
+            margin: 0 auto;
+            padding:0;
+        }
+        .wrapper{
+            background: #f1f1f1;
+            padding: 30px;
+            margin: 30px;
+        }
+        button{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <label for="number">Enter a guess</label>
+        <input id="number" type="text" autofocus>
+        <button class="submit">Submit guess</button>
+    </div>
+    <script>
+        let wrapper = document.querySelector('.wrapper');
+        let num = Math.ciel(Math.random() * 100);
+        let Submit = document.querySelector('button');
+        let counter = 1;
+        let text = 'Previous Guess : '
+        Submit.addEventListener('click',function() {
+            // console.log(counter)
+            let inputField = document.querySelector('#number');
+            let data = Number(document.querySelector('#number').value);
+            data = isNaN(data) ? 0 : data;
+            clear();
+            if(counter < 10){
+                inputField.value = "";
+                if(num === data){
+                    counter += 1;
+                    text += " "+data;
+                    let prevGuess = document.createElement('p');
+                    prevGuess.textContent  = text;
+                    prevGuess.classList.add('remove');
+                    let pTag = document.createElement('p')
+                    pTag.textContent  = "Congratulations! You got it right!";
+                    pTag.style.cssText = "background : green;color: white;"
+                    pTag.classList.add('remove');
+                    let startnewGame = document.createElement('button');
+                    startnewGame.textContent  = 'Start new game';
+                    startnewGame.classList.add('remove');
+                    wrapper.appendChild(prevGuess);
+                    wrapper.appendChild(pTag);
+                    wrapper.appendChild(startnewGame);
+
+                    startnewGame.addEventListener('click',restartGame)
+                    
+                    inputField.disabled = true;
+                    Submit.disabled = true;
+                }else if(data > num){
+                    counter += 1;
+                    text += " " + data;
+                    let prevGuess = document.createElement('p');
+                    prevGuess.textContent = text;
+                    prevGuess.classList.add('remove');
+                    let pTag = document.createElement('p')
+                    pTag.textContent = "Wrong";
+                    pTag.style.cssText = "background : red;color: white;"
+                    pTag.classList.add('remove');
+                    let resultTag = document.createElement('p')
+                    resultTag.textContent = "Last guess was too high!";
+                    resultTag.classList.add('remove');
+
+                    wrapper.appendChild(prevGuess);
+                    wrapper.appendChild(pTag);
+                    wrapper.appendChild(resultTag);
+                }else if (data < num){
+                    counter += 1;
+                    text += " " + data;
+                    let prevGuess = document.createElement('p');
+                    prevGuess.textContent = text;
+                     prevGuess.classList.add('remove');
+                    let pTag = document.createElement('p')
+                    pTag.textContent = "Wrong";
+                    pTag.style.cssText = "background : red;color: white;"
+                    pTag.classList.add('remove');
+                    let resultTag = document.createElement('p')
+                    resultTag.textContent = "Last guess was too low!";
+                    resultTag.classList.add('remove');
+
+                    wrapper.appendChild(prevGuess);
+                    wrapper.appendChild(pTag);
+                    wrapper.appendChild(resultTag);                   
+                }
+            }else{
+                text += " " + data;
+                let prevGuess = document.createElement('p');
+                prevGuess.textContent = text;
+                prevGuess.classList.add('remove');
+                let pTag = document.createElement('p')
+                pTag.textContent = "!!!GAME OVER!!!";
+                pTag.style.cssText = "background : red;color: white;"
+                pTag.classList.add('remove');
+                let startnewGame = document.createElement('button');
+                startnewGame.textContent = 'Start new game';
+                startnewGame.classList.add('remove');
+                wrapper.appendChild(prevGuess);
+                wrapper.appendChild(pTag);
+                wrapper.appendChild(startnewGame);
+                startnewGame.addEventListener('click', restartGame)
+                inputField.value = "";
+                inputField.disabled = true;
+                Submit.disabled = true;
+            }
+        })
+
+        function clear(){
+            let pTags = document.body.querySelectorAll('.remove');
+            if(pTags.length !== 0){
+                pTags.forEach(tag => {
+                    tag.parentNode.removeChild(tag);
+                });
+            }
+            pTags = document.body.querySelectorAll('.remove');
+            // console.log(pTags)
+        }
+
+        function restartGame(){
+            counter = 1;
+            text = 'Previous Guess : '
+            let inputField = document.querySelector('#number');
+            let Submit = document.querySelector('button');
+            inputField.disabled = false;
+            Submit.disabled = false;
+            clear();
+        }
+    </script>
+</body>
+</html>
