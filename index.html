@@ -52,7 +52,6 @@
             position: relative;
             transition: all 1s;
             vertical-align: middle;
-            /* margin: 0px 0px 5px 0px; */
         }
 
         .main-image {
@@ -450,11 +449,7 @@
         function addOrRemoveFormWishlist() {
             let heart = wishlist.querySelector('.fa-heart')
             // console.log(heart)
-            if (heart.style.color !== 'red') {
-                heart.style.color = 'red'
-            } else {
-                heart.style.color = '#aaa'
-            }
+            heart.style.color = (heart.style.color !== 'red') ? 'red' : '#aaa'
         }
     </script>
 </body>

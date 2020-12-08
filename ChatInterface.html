@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        crossorigin="anonymous">
+    <title>chat-interface</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+
+<body>
+    <div class="notification-container">
+        <span id="notification-message"></span>
+    </div>
+    <div class="chat-icon"><i class="fa fa-commenting-o fa-lg" aria-hidden="true"></i></div>
+    <div class="chat-wrapper">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="left">
+                </div>
+                <div class="right">
+                    <a href="#"><i class="fa fa-window-minimize minimize" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-times fa-lg close" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="chat-content-area">
+                <div class="chat-content-area-container">
+                    <div class="alert">
+                        <div class="card">
+                            <div class="card-title" style="text-align: center;">Are you sure you want to close it?</div>
+                            <div class="card-content">
+                                <button class="cancel" style="padding: 8px;background: red;color: white;float: right; margin: 0px 3px;font-size: 16px;">cancel</button>
+                                <button class="yes" style="padding: 8px;background: dodgerblue;color: white;float: right;margin:0px 3px;font-size: 16px;">yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-box">
+                <div class="chat-box-container">
+                    <!-- <textarea class="chat-message" rows="4" cols="50"> -->
+                    <input class="chat-message" type="text">
+                    <button class="send"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button style="padding: 20px;background: dodgerblue;color: white;" onclick="test(this)">on click</button>
+    <button class="arrowFunc" style="padding: 20px;background: dodgerblue;color: white;">ArrowFunction</button>
+    <script src="chat.js"></script>
+    <script src="thiskeyword.js"></script>
+</body>
+
+</html>

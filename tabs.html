@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabs</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .tabs{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            background: rgba(248, 168, 38, 0.6);
+            color: white;
+            cursor: pointer;
+        }
+        .tab{
+            padding: 20px 25px;
+            font-size: 20px;
+        }
+        .tab:hover{
+            background: rgba(248, 168, 38, 0.9);
+        }
+        .wrapper{
+            max-width: 768px;
+            margin: 0 auto;
+        }
+        .section{
+            display: none;
+            margin: 20px;
+            padding: 20px 30px;
+        }
+        .section:nth-of-type(odd){
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <div class="tab">Tab1</div>
+        <div class="tab">Tab2</div>
+        <div class="tab">Tab3</div>
+    </div>
+    <div class="wrapper">
+        <div id="tab1" class="section">
+            <h3>tab1</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cumque quisquam quos nam atque illum magnam inventore aperiam. Libero asperiores autem nisi doloribus ad minus vel, ipsam quod. A, voluptatibus?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolorum unde magni? Numquam harum mollitia molestias eaque officiis rerum vero asperiores nobis voluptates sed hic, dolore autem minus quod veritatis?
+            </p>
+        </div>
+        <div id="tab2" class="section">
+            <h3>tab2</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cumque quisquam quos nam atque illum magnam
+                inventore aperiam. Libero asperiores autem nisi doloribus ad minus vel, ipsam quod. A, voluptatibus?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolorum unde magni? Numquam harum mollitia molestias
+                eaque officiis rerum vero asperiores nobis voluptates sed hic, dolore autem minus quod veritatis?
+            </p>
+        </div>
+        <div id="tab3" class="section">
+            <h3>tab3</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis cumque quisquam quos nam atque illum magnam
+                inventore aperiam. Libero asperiores autem nisi doloribus ad minus vel, ipsam quod. A, voluptatibus?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolorum unde magni? Numquam harum mollitia molestias
+                eaque officiis rerum vero asperiores nobis voluptates sed hic, dolore autem minus quod veritatis?
+            </p>
+        </div>
+    </div>
+
+    <script>
+        tabs = document.querySelectorAll('div.tab')
+        tabs.forEach((tab,index) => {
+            tab.setAttribute('onclick',`showtab(${tab.className + (index+1)})`)
+        })
+
+        function showtab(tab){
+            tab.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

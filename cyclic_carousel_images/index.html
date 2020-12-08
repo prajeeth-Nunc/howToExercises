@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>carousel-inprogress</title>
+    <style>
+        .login-form{
+            margin: 20px auto;
+        }
+        label{
+            color: white;
+        }
+        input{
+            margin: 10px auto;
+            outline: none;
+            padding: 8px 10px ;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            box-sizing: border-box;
+        }
+        input[type=submit]{
+            display: block;
+            text-align: center;
+            border: none;
+            padding: 10px 25px ;
+            width: 50%;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-weight: 900;
+        }
+        input[type=submit]:hover{
+            background: orangered;
+            color: white;
+        }
+        .notification-container{
+            position: fixed;
+            right: 0;
+            top: 0;
+            background: green;
+            color: white;
+            margin: 10px;
+            padding: 20px;
+            z-index: 1;
+            min-width: 130px;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="notification-container">
+        <span id="notification-message"></span>
+    </div>
+    <nav>
+        <ul>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#Tab1">Tab1</a></li>
+            <li><a href="#Tab2">Tab2</a></li>
+            <li><a href="#Tab3">Tab3</a></li>
+            <li class="dropDown">
+                <a href="#">DropDown</a>
+                <ul>
+                    <li><a href="#Task1">Task1</a></li>
+                    <li><a href="#Task2">Task2</a></li>
+                    <li><a href="#Task3">Task3</a></li>
+                    <li><a href="#Task4">Task4</a></li>
+                </ul>
+            </li>
+            <!-- <li><a href="#model1" style="float: right;">login</a></li> -->
+        </ul>
+    </nav>
+
+    <div class="wrapper">
+        <div class="carousel-container">
+            <div class="images-container">
+                <a target="_blank" href="images/img1.jpg">
+                    <img src="images/img1.jpg" alt="img1">
+                </a>
+                <a target="_blank" href="images/img2.jpg">
+                    <img src="images/img2.jpg" alt="img2">
+                </a>
+                <a target="_blank" href="images/img3.jpg">
+                    <img src="images/img3.jpg" alt="img3">
+                </a>
+                <a target="_blank" href="images/img4.jpg">
+                    <img src="images/img4.jpg" alt="img4">
+                </a>
+                <a target="_blank" href="images/img5.jpg">
+                    <img src="images/img5.jpg" alt="img5">
+                </a>
+                <a target="_blank" href="images/img6.jpg">
+                    <img src="images/img6.jpg" alt="img6">
+                </a>
+                <a target="_blank" href="images/img7.jpg">
+                    <img src="images/img7.jpg" alt="img7">
+                </a>
+                <a target="_blank" href="images/img8.jpg">
+                    <img src="images/img8.jpg" alt="img8">
+                </a>
+                <a target="_blank" href="images/img9.jpg">
+                    <img src="images/img9.jpg" alt="img9">
+                </a>
+                <a target="_blank" href="images/img10.jpg">
+                    <img src="images/img10.jpg" alt="img10">
+                </a>
+                <a target="_blank" href="images/img11.jpg">
+                    <img src="images/img11.jpg" alt="img11">
+                </a>
+
+                <div class="carousel-controls">
+                    <button onclick="Left()" class="left"><i class="fa fa-chevron-left"></i></button>
+                    <button onclick="Right()" class="right"><i class="fa fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <!-- <a id="modelBtn" href="#model1">Pop Up</a> -->
+        <div id="model1" class="model">
+            <div class="model-wrapper">
+                <div class="model-content">
+                    <a id="close" title="close" href="#">X</a>
+                    <!-- <header>                       
+                        <h2 style="text-align: center; color: white;">Login</h2>
+                        <hr>
+                    </header>
+                    <div class="container">
+                        <form class="login-form">
+                            <label for="email">Email :</label><br>
+                            <small style="display: none; color: red;" id="error-email">invalid email</small>
+                            <input id="email" type="email" placeholder="Enter email id" required><br>
+                            <label for="password">Password :</label><br>
+                            <small style="display: none; color: red;" id="error-pass">invalid password</small>
+                            <input id="password" type="password" placeholder="Password" required><br>
+                            <input onclick="Login(event)" type="submit" value="login">
+                        </form>
+                    </div> -->
+                    <!-- <div class="container">
+
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

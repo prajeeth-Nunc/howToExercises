@@ -1,0 +1,182 @@
+/*  --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px; 
+*/
+body {
+    margin: 0;
+    padding: 0;
+    background: #f8f8f8;
+    font-family: Roboto, Arial, sans-serif;
+}
+
+.chat-icon{
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    padding: 20px;
+    border-radius: 50rem!important;
+    cursor: pointer;
+    box-shadow: -1px 1px 8px 1px rgba(0,0,0,0.4);
+    background: dodgerblue;
+    color: white;
+}
+
+.chat-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    display: none;
+}
+
+.chat-container{
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    width: 600px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chat-header{
+    width: 100%;
+    padding: 18px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: dodgerblue;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px ;
+}
+
+div.left {
+    float: left;
+}
+div.right {
+    float: right;
+}
+
+.chat-content-area{
+    width: 96%;
+    margin: 2%;
+    box-sizing: border-box;
+    height: 600px;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* overflow: scroll; */
+    position: relative;
+}
+
+/* .chat-content-area-container{
+    height: 600px;
+    overflow-y: scroll;
+} */
+
+.chat-box{
+    width: 96%;
+    margin: 2%;
+    box-sizing: border-box;
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+.chat-box-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.chat-message{
+    padding: 10px;
+    margin: 3px;
+    flex: 85%;
+}
+
+input{
+    border: 1px solid rgba(0,0,0,0.2);
+    outline: none;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.send{
+    margin: 3px;
+    flex: 15%;
+    border-radius: 5px;
+}
+
+.send:hover{
+    background: dodgerblue;
+    color: white;
+}
+
+.message{
+    padding:12px 20px;
+    margin: 15px;
+    background:dodgerblue;
+    color: #fff;
+    border-radius: 6px;
+}
+
+.time{
+    padding:5px 20px;
+}
+
+.alert{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.2);
+}
+
+.card{
+    background: white;
+    color: black;
+    border-radius: 5px;
+}
+
+.card-title,
+.card-content{
+    padding: 14px;
+    box-sizing: border-box;
+}
+
+.card-content::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.notification-container {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background: green;
+    color: white;
+    padding: 20px;
+    z-index: 1;
+    min-width: 130px;
+    border-radius: 4px;
+    display: none;
+}
